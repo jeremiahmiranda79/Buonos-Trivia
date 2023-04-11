@@ -2,43 +2,46 @@ var timeElement = document.querySelector(".time");
 var startButtonElement = document.querySelector(".start-button");
 var headerElement = document.querySelector(".title");
 var paragraphElement = document.querySelector(".about");
-var timeLeft = 10;
+var timeLeft = 100;
 var questionIndex = 0;
 var buttons = [];
 var guesses = [];
 var score = 0;
+var isStopTime = false;
 
 init();
 
 function init() {
-    timeLeft = 10;
-    saveQuestions();
-    setTimeText(); 
+    saveQuestions(); 
     setHomePage();
+    setTimeText();
 }
 
 function setTimeText() {
     timeElement.textContent = timeLeft;
 }
 
-function setTime() {
+function startTime() {
     var timerInterval = setInterval(function() {
         timeLeft--;
         setTimeText();
+        if (isStopTime) {
+            clearInterval(timerInterval);
+            timeElement.textContent = timeLeft + 1;
+        }
 
         if (timeLeft === 0) {
             // Stops execution of action at set interval
             clearInterval(timerInterval);
-            timeLeft = 10;
-            setTimeText(); 
-            }
+            // setTimeText(); 
+        }
+
     }, 1000); 
 }
 
 function setHomePage() {
     startButtonElement.addEventListener("click", function() {
-        timeLeft = 10;
-        setTime();
+        startTime();
         setQuestions(questionIndex);
     });
 }
@@ -73,17 +76,17 @@ function setQuestions(_questionIndex) {
                 document.body.appendChild(correct);
                 var count = 1;
                 var timerInterval = setInterval(function() {
-                count--;
+                    count--;
+
                     if (count === 0) {
                         // Stops execution of action at set interval
                         clearInterval(timerInterval);
-                        timeLeft = 1;
+                        count = 1;
                         question.remove();
                         line.remove();
                         correct.remove();
                         
                         for (var i = 0; i < buttons.length; i++) {
-                            // buttons[i].setAttribute("style", "display: none");
                             buttons[i].remove();
                         }
                         
@@ -93,6 +96,7 @@ function setQuestions(_questionIndex) {
                             setQuestions(questionIndex);
                         }
                         else {
+                            isStopTime = true;
                             submitScore();
                         }
                     }
@@ -106,15 +110,15 @@ function setQuestions(_questionIndex) {
                 var count = 1;
                 var timerInterval = setInterval(function() {
                     count--;
-                    console.log(count);
-            
+          
                     if (count === 0) {
                         // Stops execution of action at set interval
                         clearInterval(timerInterval);
-                        timeLeft = 1;
+                        count = 1;
                         line.remove();
                         wrong.remove();
-                        buttons[_buttonIndex].remove();  
+                        buttons[_buttonIndex].remove();
+                        timeLeft = timeLeft - 10; 
                     }
                 }, 1000); 
             }
@@ -127,6 +131,7 @@ function submitScore() {
     header.textContent = "All done!";
     document.body.appendChild(header);
     var finalScore = document.createElement("p");
+    score = timeLeft;
     finalScore.textContent = "Your final score is " + score;
     document.body.appendChild(finalScore);
 }
