@@ -1,0 +1,195 @@
+var timeElement = document.querySelector(".time");
+var startButtonElement = document.querySelector(".start-button");
+var headerElement = document.querySelector(".title");
+var paragraphElement = document.querySelector(".about");
+var timeLeft = 10;
+var questionIndex = 0;
+var buttons = [];
+var guesses = [];
+var score = 0;
+
+init();
+
+function init() {
+    timeLeft = 10;
+    saveQuestions();
+    setTimeText(); 
+    setHomePage();
+}
+
+function setTimeText() {
+    timeElement.textContent = timeLeft;
+}
+
+function setTime() {
+    var timerInterval = setInterval(function() {
+        timeLeft--;
+        setTimeText();
+
+        if (timeLeft === 0) {
+            // Stops execution of action at set interval
+            clearInterval(timerInterval);
+            timeLeft = 10;
+            setTimeText(); 
+            }
+    }, 1000); 
+}
+
+function setHomePage() {
+    startButtonElement.addEventListener("click", function() {
+        timeLeft = 10;
+        setTime();
+        setQuestions(questionIndex);
+    });
+}
+
+function setQuestions(_questionIndex) {
+    startButtonElement.setAttribute("style", "display: none");
+    headerElement.setAttribute("style", "display: none");
+    paragraphElement.setAttribute("style", "display: none");
+    var question = document.createElement("h2");
+    question.textContent = myFuncs[_questionIndex]().question;
+    document.body.appendChild(question);
+
+    for (var i = 0; i < myFuncs[_questionIndex]().guess.length; i++) {
+        buttons[i] = document.createElement("button");
+        buttons[i].textContent = i+1 + ": " + myFuncs[_questionIndex]().guess[i];
+        guesses[i] = myFuncs[_questionIndex]().guess[i]; 
+        document.body.appendChild(buttons[i]);
+    }
+
+    buttonInfo(0);
+    buttonInfo(1);
+    buttonInfo(2);
+    buttonInfo(3);
+
+    function buttonInfo(_buttonIndex) {
+        buttons[_buttonIndex].addEventListener("click", function() {
+            if (guesses[_buttonIndex] === myFuncs[_questionIndex]().answer) {
+                var line = document.createElement("hr");
+                var correct = document.createElement("p");
+                correct.textContent = "Correct";
+                document.body.appendChild(line);
+                document.body.appendChild(correct);
+                var count = 1;
+                var timerInterval = setInterval(function() {
+                count--;
+                    if (count === 0) {
+                        // Stops execution of action at set interval
+                        clearInterval(timerInterval);
+                        timeLeft = 1;
+                        question.remove();
+                        line.remove();
+                        correct.remove();
+                        
+                        for (var i = 0; i < buttons.length; i++) {
+                            // buttons[i].setAttribute("style", "display: none");
+                            buttons[i].remove();
+                        }
+                        
+                        questionIndex++;
+
+                        if (questionIndex < myFuncs.length) {
+                            setQuestions(questionIndex);
+                        }
+                        else {
+                            submitScore();
+                        }
+                    }
+                }, 1000);       
+            } else {
+                var line = document.createElement("hr");
+                var wrong = document.createElement("p");
+                wrong.textContent = "Wrong";
+                document.body.appendChild(line); 
+                document.body.appendChild(wrong);
+                var count = 1;
+                var timerInterval = setInterval(function() {
+                    count--;
+                    console.log(count);
+            
+                    if (count === 0) {
+                        // Stops execution of action at set interval
+                        clearInterval(timerInterval);
+                        timeLeft = 1;
+                        line.remove();
+                        wrong.remove();
+                        buttons[_buttonIndex].remove();  
+                    }
+                }, 1000); 
+            }
+        });
+    }
+}
+
+function submitScore() {
+    var header = document.createElement("h2");
+    header.textContent = "All done!";
+    document.body.appendChild(header);
+    var finalScore = document.createElement("p");
+    finalScore.textContent = "Your final score is " + score;
+    document.body.appendChild(finalScore);
+}
+
+function saveQuestions() {
+    var question1 = {
+        question: "What year was Buonos Pizza first established?",
+        guess: ["1989", "2002", "2021", "1998"],
+        answer: "1989"
+    };
+    var question2 = {
+        question: "The Margherita pizza is most likely named after what former queen of Italia?",
+        guess: ["Elana of Padua", "Maria Luisa of Parma", "Margherita of Savoy", "Mary of Modena"],
+        answer: "Margherita of Savoy"
+    }
+    var question3 = {
+        question: "What type of milk is used in Romano cheese?",
+        guess: ["Cow", "Sheep", "Goat", "Coconut"],
+        answer: "Sheep"
+    }
+    var question4 = {
+        question: "Neapolitan pizza, or pizza Napoletana refers to what part of Italy that this pizza found its roots?",
+        guess: ["Genoa", "Bologna", "Venice", "Naples"],
+        answer: "Naples"
+    }
+    var question5 = {
+        question: "What is the difference for Stomboli and Calzone?",
+        guess: ["Clalzone is a folded circle", "Stromboli has its content rolled", "Either is typically brushed with eggwash before baking", "All of the above"],
+        answer: "All of the above"
+    }
+
+    // Save related form data as an object
+    // Use .setItem() to store object in storage and JSON.stringify to convert it as a string
+    localStorage.setItem("question1", JSON.stringify(question1));
+    localStorage.setItem("question2", JSON.stringify(question2));
+    localStorage.setItem("question3", JSON.stringify(question3));
+    localStorage.setItem("question4", JSON.stringify(question4));
+    localStorage.setItem("question5", JSON.stringify(question5));
+}
+
+var myFuncs = [
+    function getQuestion1() {
+        var myQuestion = JSON.parse(localStorage.getItem("question1"));
+        return myQuestion;
+    },
+
+    function getQuestion2() {
+        var myQuestion = JSON.parse(localStorage.getItem("question2"));
+        return myQuestion;
+    },
+
+    function getQuestion3() {
+        var myQuestion = JSON.parse(localStorage.getItem("question3"));
+        return myQuestion;
+    },
+
+    function getQuestion4() {
+        var myQuestion = JSON.parse(localStorage.getItem("question4"));
+        return myQuestion;
+    },
+
+    function getQuestion5() {
+        var myQuestion = JSON.parse(localStorage.getItem("question5"));
+        return myQuestion;
+    },
+];
