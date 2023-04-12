@@ -1,9 +1,9 @@
-var timeElement = document.querySelector(".time");
 var startButtonElement = document.querySelector(".start-button");
-var headerElement = document.querySelector(".title");
-var paragraphElement = document.querySelector(".about");
+var hero1Element = document.querySelector(".hero1");
+var hero2Element = document.querySelector(".hero2");
 
 var mainElement = document.getElementsByName("main");
+var timeElement = document.querySelector(".time");
 
 var timeLeft = 100;
 var questionIndex = 0;
@@ -19,7 +19,7 @@ init();
 function init() {
     // highScoresList = JSON.parse(localStorage.getItem("highScoresList")) || [];
     highScoresList = JSON.parse(localStorage.getItem("highScoresList"));
-    
+
     if (!highScoresList) {
         highScoresList = [];
     }
@@ -60,8 +60,8 @@ function setHomePage() {
 
 function setQuestions(_questionIndex) {
     startButtonElement.setAttribute("style", "display: none");
-    headerElement.setAttribute("style", "display: none");
-    paragraphElement.setAttribute("style", "display: none");
+    hero1Element.setAttribute("style", "display: none");
+    hero2Element.setAttribute("style", "display: none");
 
     var question = document.createElement("h4");
 

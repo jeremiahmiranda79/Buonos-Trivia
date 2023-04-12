@@ -1,42 +1,90 @@
+:root {
+    --italian-green: #008c45;
+    --italian-white: #f4f5f0;
+    --italian-red: #cd212a;
+}
+
 * {
-    box-sizing: border-box;  
+    box-sizing: border-box; 
 }
 
 header {
     padding: 10px;
-    /* border-bottom: 20px; */
+    margin: auto;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-between;
+    background-color: var(--italian-green);
 }
 
-main {
-    max-width: 50%;
+header p {
+    color: var(--italian-red);
+    font-size: 40px;
+    font-weight: 700;
+    padding-left: 100px;
+    margin: auto;
+
+    /* background-color: black; */
+}
+
+header .view-high-scores {
+    color: var(--italian-red);
+    font-size: 40px;
+    font-weight: 700;
+    padding-right: 100px;
+    margin: auto;
+
+    /* background-color: black; */
+}
+
+header .view-high-scores:hover{
+    color: var(--italian-white);
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.hero1 {
+    background-color: var(--italian-red);
+    padding: 3rem;
+    max-width: 100%;
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    text-align: center;
-    margin: auto; 
 }
 
-section {
-    max-width: 50%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: left;
-    text-align: left;
-    margin: auto; 
+
+
+
+
+
+.hero2 {
+    background-color: var(--italian-white);
+    padding: 4rem;
+    height: 100vh;
+    max-width: 100%;
+    /* margin-bottom: 500px; */
+    /* margin: 25px; */
+    font-size: 40px;
 }
 
-#question {
-    
+.start-button-container {
+
 }
 
-#buttons {
-    flex-direction: column;
-    
+.start-button {
+    border-radius: 6px;
+    font-size: 70px;
+    margin: 0;
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: var(--italian-green);
 }
+
+.start-button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  }
 
 h1 {
 	/* 4rem = 40px (4 * 10px) */
@@ -44,7 +92,7 @@ h1 {
 }
 
 h2 {
-	font-size: 3.5rem;
+    font-size: 3.5rem;
 }
 
 h3 {
@@ -63,26 +111,19 @@ h6 {
 	font-size: 1.5rem;
 }
 
-p {
-	margin-bottom: 1rem;
-}
-
 button {
-    font-size: 20px;
-    padding: 5px;
-    display: flex;
-    flex-direction: column;
+    /* font-size: 20px; */
+    /* padding-bottom: 650px; */
+    /* display:; */
+    /* flex-direction: column; */
+    /* display: block;
     background-color: purple;
     color: white;
-    border-radius: 6px;
+    border-radius: 6px; */
 }
 
-.title {
-    padding: 3rem;
-	text-align: center;
-}
 
-.view-high-scores {
+/* .view-high-scores {
     text-decoration-line: none;
     color: black;
-}
+} */
