@@ -2,6 +2,9 @@ var timeElement = document.querySelector(".time");
 var startButtonElement = document.querySelector(".start-button");
 var headerElement = document.querySelector(".title");
 var paragraphElement = document.querySelector(".about");
+
+var mainElement = document.getElementsByName("main");
+
 var timeLeft = 100;
 var questionIndex = 0;
 var buttons = [];
@@ -9,9 +12,18 @@ var guesses = [];
 var score = 0;
 var isStopTime = false;
 
+var highScoresList = [];
+
 init();
 
 function init() {
+    // highScoresList = JSON.parse(localStorage.getItem("highScoresList")) || [];
+    highScoresList = JSON.parse(localStorage.getItem("highScoresList"));
+    
+    if (!highScoresList) {
+        highScoresList = [];
+    }
+
     saveQuestions(); 
     setHomePage();
     setTimeText();
@@ -50,15 +62,19 @@ function setQuestions(_questionIndex) {
     startButtonElement.setAttribute("style", "display: none");
     headerElement.setAttribute("style", "display: none");
     paragraphElement.setAttribute("style", "display: none");
-    var question = document.createElement("h2");
+
+    var question = document.createElement("h4");
+
     question.textContent = myFuncs[_questionIndex]().question;
-    document.body.appendChild(question);
+    // document.body.appendChild(question);
+    document.getElementById("question").appendChild(question);
 
     for (var i = 0; i < myFuncs[_questionIndex]().guess.length; i++) {
         buttons[i] = document.createElement("button");
         buttons[i].textContent = i+1 + ": " + myFuncs[_questionIndex]().guess[i];
         guesses[i] = myFuncs[_questionIndex]().guess[i]; 
-        document.body.appendChild(buttons[i]);
+        // document.body.appendChild(buttons[i]);
+        document.getElementById("buttons").appendChild(buttons[i]);
     }
 
     buttonInfo(0);
@@ -97,7 +113,7 @@ function setQuestions(_questionIndex) {
                         }
                         else {
                             isStopTime = true;
-                            submitScore();
+                            submitScore(highScoresList);
                         }
                     }
                 }, 1000);       
@@ -124,16 +140,46 @@ function setQuestions(_questionIndex) {
             }
         });
     }
-}
+} 
 
-function submitScore() {
+function submitScore(arr) {
     var header = document.createElement("h2");
     header.textContent = "All done!";
     document.body.appendChild(header);
+
     var finalScore = document.createElement("p");
     score = timeLeft;
     finalScore.textContent = "Your final score is " + score;
     document.body.appendChild(finalScore);
+
+    var enterNameElement = document.createElement("p");
+    enterNameElement.textContent = "Enter initials";
+    document.body.appendChild(enterNameElement);
+
+    var input = document.createElement("input");    
+    document.body.appendChild(input);
+
+    var submitButton = document.createElement("button");
+    submitButton.textContent = "Submit";
+    document.body.appendChild(submitButton);
+
+    submitButton.addEventListener("click", function() {
+        var playerHighScore = {
+            name: input.value,
+            highScore: score
+        };
+
+        console.log(playerHighScore.name);
+        console.log(playerHighScore.highScore);
+        console.log(playerHighScore);
+
+        // var highScoresList = [];
+        // highScoresList.push(playerHighScore);
+        arr.push(playerHighScore);
+
+        localStorage.setItem("highScoresList", JSON.stringify(highScoresList));
+        window.location.href = "Assets/html/high-score-page.html";
+    });
 }
 
 function saveQuestions() {
