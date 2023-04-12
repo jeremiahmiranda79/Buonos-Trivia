@@ -111,19 +111,25 @@ h6 {
 	font-size: 1.5rem;
 }
 
-button {
-    /* font-size: 20px; */
+#question {
+    padding: 40px;
+    background-color: var(--italian-red);
+}
+
+#buttons button{
+    font-size: 75px; 
     /* padding-bottom: 650px; */
-    /* display:; */
-    /* flex-direction: column; */
-    /* display: block;
-    background-color: purple;
-    color: white;
-    border-radius: 6px; */
+    display: flex; 
+    flex-direction: column; 
+    /* display: block; */
+    background-color: var(--italian-green);
+    color: var(--italian-white);
+    border-radius: 6px;
+    padding: 5px;
 }
 
 
-/* .view-high-scores {
+.view-high-scores {
     text-decoration-line: none;
     color: black;
-} */
+}
