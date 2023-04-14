@@ -211,6 +211,96 @@ function saveQuestions() {
         answer: "All of the above"
     }
 
+    var question6 = {
+        question: "Where did the chicken parmesan dish find its roots?",
+        guess: ["United States of America", "Northern Italy", "Southern Italy", "East Africa"],
+        answer: "United States of America"
+    }
+
+    var question7 = {
+        question: "Where was the original Bononos Pizza location?",
+        guess: ["2023 W Guadalue Rd Mesa AZ 85202", "3500 E Power Rd Gilbert AZ 85142", "2400 S Fast Cat Ln Poenix AZ 84674", "4555 N Bright Ave Queen Creek AZ 85146"],
+        answer: "2023 W Guadalue Rd Mesa AZ 85202"
+    }
+
+    var question8 = {
+        question: "What is NOT a French cuisine mother sauce?",
+        guess: ["Veloute", "Tomate", "Bechamel", "Gravy"],
+        answer: "Gravy"
+    }
+
+    var question9 = {
+        question: "Where did the Cannoli originate from?",
+        guess: ["Calabria", "Sicily", "Campania", "Basilicata"],
+        answer: "Sicily"
+    }
+
+    var question10 = {
+        question: 'What day is "Price" spaghetti day?',
+        guess: ["Wednesday", "Thursday", "Monday", "Friday"],
+        answer: "Wednesday"
+    }
+
+    var question11 = {
+        question: 'Boars Head Deli is from what US state?',
+        guess: ["Kansas", "Alaska", "New York", "Montana"],
+        answer: "New York"
+    }
+
+    var question12 = {
+        question: 'The name pasta "Puttanesca" comes from what Italian slang?',
+        guess: ["Sweat and Sour", "Lady of the night", "Mini golf hole in one", "Tip of the ole Boot"],
+        answer: "Lady of the night"
+    }
+
+    // var question13 = {
+    //     question: '',
+    //     guess: ["", "", "", ""],
+    //     answer: ""
+    // }
+
+    // var question14 = {
+    //     question: '',
+    //     guess: ["", "", "", ""],
+    //     answer: ""
+    // }
+
+    // var question15 = {
+    //     question: '',
+    //     guess: ["", "", "", ""],
+    //     answer: ""
+    // }
+
+    // var question16 = {
+    //     question: '',
+    //     guess: ["", "", "", ""],
+    //     answer: ""
+    // }
+
+    // var question17 = {
+    //     question: '',
+    //     guess: ["", "", "", ""],
+    //     answer: ""
+    // }
+
+    // var question18 = {
+    //     question: '',
+    //     guess: ["", "", "", ""],
+    //     answer: ""
+    // }
+
+    // var question19 = {
+    //     question: '',
+    //     guess: ["", "", "", ""],
+    //     answer: ""
+    // }
+
+    // var question20 = {
+    //     question: '',
+    //     guess: ["", "", "", ""],
+    //     answer: ""
+    // }
+
     // Save related form data as an object
     // Use .setItem() to store object in storage and JSON.stringify to convert it as a string
     localStorage.setItem("question1", JSON.stringify(question1));
@@ -218,6 +308,21 @@ function saveQuestions() {
     localStorage.setItem("question3", JSON.stringify(question3));
     localStorage.setItem("question4", JSON.stringify(question4));
     localStorage.setItem("question5", JSON.stringify(question5));
+    localStorage.setItem("question6", JSON.stringify(question6));
+    localStorage.setItem("question7", JSON.stringify(question7));
+    localStorage.setItem("question8", JSON.stringify(question8));
+    localStorage.setItem("question9", JSON.stringify(question9));
+    localStorage.setItem("question10", JSON.stringify(question10));
+    localStorage.setItem("question11", JSON.stringify(question11));
+    localStorage.setItem("question12", JSON.stringify(question12));
+    // localStorage.setItem("question13", JSON.stringify(question13));
+    // localStorage.setItem("question14", JSON.stringify(question14));
+    // localStorage.setItem("question15", JSON.stringify(question15));
+    // localStorage.setItem("question16", JSON.stringify(question16));
+    // localStorage.setItem("question17", JSON.stringify(question17));
+    // localStorage.setItem("question18", JSON.stringify(question18));
+    // localStorage.setItem("question19", JSON.stringify(question19));
+    // localStorage.setItem("question20", JSON.stringify(question20));
 }
 
 var myFuncs = [
@@ -246,40 +351,40 @@ var myFuncs = [
         return myQuestion;
     },
 
-    // function getQuestion6() {
-    //     var myQuestion = JSON.parse(localStorage.getItem("question6"));
-    //     return myQuestion;
-    // },
+    function getQuestion6() {
+        var myQuestion = JSON.parse(localStorage.getItem("question6"));
+        return myQuestion;
+    },
 
-    // function getQuestion7() {
-    //     var myQuestion = JSON.parse(localStorage.getItem("question7"));
-    //     return myQuestion;
-    // },
+    function getQuestion7() {
+        var myQuestion = JSON.parse(localStorage.getItem("question7"));
+        return myQuestion;
+    },
 
-    // function getQuestion8() {
-    //     var myQuestion = JSON.parse(localStorage.getItem("question8"));
-    //     return myQuestion;
-    // },
+    function getQuestion8() {
+        var myQuestion = JSON.parse(localStorage.getItem("question8"));
+        return myQuestion;
+    },
 
-    // function getQuestion9() {
-    //     var myQuestion = JSON.parse(localStorage.getItem("question9"));
-    //     return myQuestion;
-    // },
+    function getQuestion9() {
+        var myQuestion = JSON.parse(localStorage.getItem("question9"));
+        return myQuestion;
+    },
 
-    // function getQuestion10() {
-    //     var myQuestion = JSON.parse(localStorage.getItem("question10"));
-    //     return myQuestion;
-    // },
+    function getQuestion10() {
+        var myQuestion = JSON.parse(localStorage.getItem("question10"));
+        return myQuestion;
+    },
 
-    // function getQuestion11() {
-    //     var myQuestion = JSON.parse(localStorage.getItem("question11"));
-    //     return myQuestion;
-    // },
+    function getQuestion11() {
+        var myQuestion = JSON.parse(localStorage.getItem("question11"));
+        return myQuestion;
+    },
 
-    // function getQuestion12() {
-    //     var myQuestion = JSON.parse(localStorage.getItem("question12"));
-    //     return myQuestion;
-    // },
+    function getQuestion12() {
+        var myQuestion = JSON.parse(localStorage.getItem("question12"));
+        return myQuestion;
+    },
 
     // function getQuestion13() {
     //     var myQuestion = JSON.parse(localStorage.getItem("question13"));
