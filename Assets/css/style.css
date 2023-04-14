@@ -165,8 +165,10 @@ h6 {
 
 #highscore-input input {
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 150px;
 }
+
+#highscore-input
 
 .view-high-scores {
     text-decoration-line: none;
