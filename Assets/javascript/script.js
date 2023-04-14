@@ -18,6 +18,7 @@ init();
 
 function init() {
     // highScoresList = JSON.parse(localStorage.getItem("highScoresList")) || [];
+
     highScoresList = JSON.parse(localStorage.getItem("highScoresList"));
 
     if (!highScoresList) {
@@ -85,11 +86,13 @@ function setQuestions(_questionIndex) {
     function buttonInfo(_buttonIndex) {
         buttons[_buttonIndex].addEventListener("click", function() {
             if (guesses[_buttonIndex] === myFuncs[_questionIndex]().answer) {
+                
                 var line = document.createElement("hr");
                 var correct = document.createElement("p");
                 correct.textContent = "Correct";
-                document.body.appendChild(line);
-                document.body.appendChild(correct);
+                document.getElementById("feed-back").appendChild(line);
+                document.getElementById("feed-back").appendChild(correct);
+
                 var count = 1;
                 var timerInterval = setInterval(function() {
                     count--;
@@ -120,10 +123,10 @@ function setQuestions(_questionIndex) {
             } else {
                 var line = document.createElement("hr");
                 var wrong = document.createElement("p");
-                wrong.textContent = "Wrong";
-                document.body.appendChild(line); 
-                document.body.appendChild(wrong);
                 var count = 1;
+                wrong.textContent = "Wrong";
+                document.getElementById("feed-back").appendChild(line);
+                document.getElementById("feed-back").appendChild(wrong);
                 var timerInterval = setInterval(function() {
                     count--;
           
@@ -146,22 +149,28 @@ function submitScore(arr) {
     var header = document.createElement("h2");
     header.textContent = "All done!";
     document.body.appendChild(header);
+    // document.getElementById.appendChild("highscore-input")
+    document.getElementById("highscore-input").appendChild(header);
 
     var finalScore = document.createElement("p");
     score = timeLeft;
-    finalScore.textContent = "Your final score is " + score;
-    document.body.appendChild(finalScore);
+    finalScore.textContent = "Your final score is: " + score;
+    // document.body.appendChild(finalScore);
+    document.getElementById("highscore-input").appendChild(finalScore);
 
     var enterNameElement = document.createElement("p");
-    enterNameElement.textContent = "Enter initials";
-    document.body.appendChild(enterNameElement);
+    enterNameElement.textContent = "Please enter your name or initials";
+    // document.body.appendChild(enterNameElement);
+    document.getElementById("highscore-input").appendChild(enterNameElement);
 
     var input = document.createElement("input");    
-    document.body.appendChild(input);
+    // document.body.appendChild(input);
+    document.getElementById("highscore-input").appendChild(input);
 
     var submitButton = document.createElement("button");
     submitButton.textContent = "Submit";
-    document.body.appendChild(submitButton);
+    // document.body.appendChild(submitButton);
+    document.getElementById("highscore-input").appendChild(submitButton);
 
     submitButton.addEventListener("click", function() {
         var playerHighScore = {
@@ -169,14 +178,7 @@ function submitScore(arr) {
             highScore: score
         };
 
-        console.log(playerHighScore.name);
-        console.log(playerHighScore.highScore);
-        console.log(playerHighScore);
-
-        // var highScoresList = [];
-        // highScoresList.push(playerHighScore);
         arr.push(playerHighScore);
-
         localStorage.setItem("highScoresList", JSON.stringify(highScoresList));
         window.location.href = "Assets/html/high-score-page.html";
     });
@@ -243,4 +245,79 @@ var myFuncs = [
         var myQuestion = JSON.parse(localStorage.getItem("question5"));
         return myQuestion;
     },
+
+    // function getQuestion6() {
+    //     var myQuestion = JSON.parse(localStorage.getItem("question6"));
+    //     return myQuestion;
+    // },
+
+    // function getQuestion7() {
+    //     var myQuestion = JSON.parse(localStorage.getItem("question7"));
+    //     return myQuestion;
+    // },
+
+    // function getQuestion8() {
+    //     var myQuestion = JSON.parse(localStorage.getItem("question8"));
+    //     return myQuestion;
+    // },
+
+    // function getQuestion9() {
+    //     var myQuestion = JSON.parse(localStorage.getItem("question9"));
+    //     return myQuestion;
+    // },
+
+    // function getQuestion10() {
+    //     var myQuestion = JSON.parse(localStorage.getItem("question10"));
+    //     return myQuestion;
+    // },
+
+    // function getQuestion11() {
+    //     var myQuestion = JSON.parse(localStorage.getItem("question11"));
+    //     return myQuestion;
+    // },
+
+    // function getQuestion12() {
+    //     var myQuestion = JSON.parse(localStorage.getItem("question12"));
+    //     return myQuestion;
+    // },
+
+    // function getQuestion13() {
+    //     var myQuestion = JSON.parse(localStorage.getItem("question13"));
+    //     return myQuestion;
+    // },
+
+    // function getQuestion14() {
+    //     var myQuestion = JSON.parse(localStorage.getItem("question14"));
+    //     return myQuestion;
+    // },
+
+    // function getQuestion15() {
+    //     var myQuestion = JSON.parse(localStorage.getItem("question15"));
+    //     return myQuestion;
+    // },
+
+    // function getQuestion16() {
+    //     var myQuestion = JSON.parse(localStorage.getItem("question16"));
+    //     return myQuestion;
+    // },
+
+    // function getQuestion17() {
+    //     var myQuestion = JSON.parse(localStorage.getItem("question17"));
+    //     return myQuestion;
+    // },
+
+    // function getQuestion18() {
+    //     var myQuestion = JSON.parse(localStorage.getItem("question18"));
+    //     return myQuestion;
+    // },
+
+    // function getQuestion19() {
+    //     var myQuestion = JSON.parse(localStorage.getItem("question19"));
+    //     return myQuestion;
+    // },
+
+    // function getQuestion20() {
+    //     var myQuestion = JSON.parse(localStorage.getItem("question20"));
+    //     return myQuestion;
+    // },
 ];
