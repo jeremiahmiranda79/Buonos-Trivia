@@ -60,10 +60,6 @@ header .view-high-scores:hover{
     font-size: 40px;
 }
 
-.start-button-container {
-
-}
-
 .start-button {
     border-radius: 6px;
     font-size: 75px;
@@ -127,13 +123,10 @@ h6 {
     display: flex; 
     flex-wrap: wrap;
     flex-direction: column;
-    
     border-radius: 6px;
     padding: 15px;
     margin: 5%;
-
     text-align: left;
-    /* color: black; */
     min-width: 90%;
 }
 
@@ -168,9 +161,31 @@ h6 {
     margin-bottom: 150px;
 }
 
-#highscore-input
 
 .view-high-scores {
     text-decoration-line: none;
     color: black;
+}
+
+li {
+    font-size: 75px;
+    margin-left: 30px;
+}
+
+.clear-high-scores{
+    background-color: var(--italian-green);
+    color: black;
+    font-size: 75px; 
+    display: flex; 
+    flex-wrap: wrap;
+    flex-direction: column;
+    border-radius: 6px;
+    padding: 15px;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    text-align: left;
+    min-width: 70%;
+    text-decoration: none;
 }
