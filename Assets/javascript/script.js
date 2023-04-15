@@ -5,7 +5,7 @@ var hero2Element = document.querySelector(".hero2");
 var mainElement = document.getElementsByName("main");
 var timeElement = document.querySelector(".time");
 
-var timeLeft = 100;
+var timeLeft = 200;
 var questionIndex = 0;
 var buttons = [];
 var guesses = [];
@@ -89,7 +89,7 @@ function setQuestions(_questionIndex) {
                 
                 var line = document.createElement("hr");
                 var correct = document.createElement("p");
-                correct.textContent = "Correct";
+                correct.textContent = "Correct!";
                 document.getElementById("feed-back").appendChild(line);
                 document.getElementById("feed-back").appendChild(correct);
 
@@ -124,7 +124,7 @@ function setQuestions(_questionIndex) {
                 var line = document.createElement("hr");
                 var wrong = document.createElement("p");
                 var count = 1;
-                wrong.textContent = "Wrong";
+                wrong.textContent = "Incorrect: -5 seconds!";
                 document.getElementById("feed-back").appendChild(line);
                 document.getElementById("feed-back").appendChild(wrong);
                 var timerInterval = setInterval(function() {
@@ -137,7 +137,7 @@ function setQuestions(_questionIndex) {
                         line.remove();
                         wrong.remove();
                         buttons[_buttonIndex].remove();
-                        timeLeft = timeLeft - 10; 
+                        timeLeft = timeLeft - 5; 
                     }
                 }, 1000); 
             }
@@ -178,6 +178,14 @@ function submitScore(arr) {
             highScore: score
         };
 
+        // if (this.name === "") {
+        //     alert("Please enter a name!");
+        // }
+        // else {
+        //     arr.push(playerHighScore);
+        //     localStorage.setItem("highScoresList", JSON.stringify(highScoresList));
+        //     window.location.href = "Assets/html/high-score-page.html";
+        // }
         arr.push(playerHighScore);
         localStorage.setItem("highScoresList", JSON.stringify(highScoresList));
         window.location.href = "Assets/html/high-score-page.html";
@@ -191,7 +199,7 @@ function saveQuestions() {
         answer: "1989"
     };
     var question2 = {
-        question: "The Margherita pizza is most likely named after what former queen of Italia?",
+        question: "The Margherita pizza is most likely named after what former queen of Italy?",
         guess: ["Elana of Padua", "Maria Luisa of Parma", "Margherita of Savoy", "Mary of Modena"],
         answer: "Margherita of Savoy"
     }
@@ -205,15 +213,16 @@ function saveQuestions() {
         guess: ["Genoa", "Bologna", "Venice", "Naples"],
         answer: "Naples"
     }
+
     var question5 = {
-        question: "What is the difference for Stomboli and Calzone?",
-        guess: ["Clalzone is a folded circle", "Stromboli has its content rolled", "Either is typically brushed with eggwash before baking", "All of the above"],
-        answer: "All of the above"
+        question: "Stromboli is a pizza style shape noted that it is?",
+        guess: ["Folded", "Open face", "Rolled", "Balled"],
+        answer: "Rolled"
     }
 
     var question6 = {
-        question: "Where did the chicken parmesan dish find its roots?",
-        guess: ["United States of America", "Northern Italy", "Southern Italy", "East Africa"],
+        question: "Where did the Chicken Parmesan dish find its roots?",
+        guess: ["United States of America", "Northern Italy", "Southern Italy", "England"],
         answer: "United States of America"
     }
 
@@ -224,9 +233,9 @@ function saveQuestions() {
     }
 
     var question8 = {
-        question: "What is NOT a French cuisine mother sauce?",
-        guess: ["Veloute", "Tomate", "Bechamel", "Gravy"],
-        answer: "Gravy"
+        question: "What is NOT an Italian cuisine mother sauce?",
+        guess: ["Veloute", "Tomato", "Bechamel", "Basil Puree"],
+        answer: "Basil Puree"
     }
 
     var question9 = {
@@ -236,7 +245,7 @@ function saveQuestions() {
     }
 
     var question10 = {
-        question: 'What day is "Price" spaghetti day?',
+        question: 'What day is known as "Prince" spaghetti day?',
         guess: ["Wednesday", "Thursday", "Monday", "Friday"],
         answer: "Wednesday"
     }
@@ -253,53 +262,53 @@ function saveQuestions() {
         answer: "Lady of the night"
     }
 
-    // var question13 = {
-    //     question: '',
-    //     guess: ["", "", "", ""],
-    //     answer: ""
-    // }
+    var question13 = {
+        question: 'What does the word Buono means in Italian?',
+        guess: ["Bad", "Hungry", "Good", "Stuffed"],
+        answer: "Good"
+    }
 
-    // var question14 = {
-    //     question: '',
-    //     guess: ["", "", "", ""],
-    //     answer: ""
-    // }
+    var question14 = {
+        question: 'What year did the Pante family take full owner ship of Buonos Pizza?',
+        guess: ["2001", "2016", "1994", "1990"],
+        answer: "1994"
+    }
 
-    // var question15 = {
-    //     question: '',
-    //     guess: ["", "", "", ""],
-    //     answer: ""
-    // }
+    var question15 = {
+        question: 'The word "Gravy" at Buonos Pizza refers to  what type of sauce?',
+        guess: ["Soy Sauce", "Marinara", "Balsamic Glaze", "Alfredo"],
+        answer: "Marinara"
+    }
 
-    // var question16 = {
-    //     question: '',
-    //     guess: ["", "", "", ""],
-    //     answer: ""
-    // }
+    var question16 = {
+        question: 'What does Antipasto mean in Italian Cuisine?',
+        guess: ["Coffee drink", "Last course", "Dessert", "First course"],
+        answer: "First course"
+    }
 
-    // var question17 = {
-    //     question: '',
-    //     guess: ["", "", "", ""],
-    //     answer: ""
-    // }
+    var question17 = {
+        question: 'A Zeppole is?',
+        guess: ["Fried dough and powdered sugar", "Caramel Apple", "Lemon Cake", "Creme Brulee"],
+        answer: "Fried dough and powdered sugar"
+    }
 
-    // var question18 = {
-    //     question: '',
-    //     guess: ["", "", "", ""],
-    //     answer: ""
-    // }
+    var question18 = {
+        question: 'Drakes Cakes originated in what New York City Burough?',
+        guess: ["Bronx", "Brooklyn", "Manhattan", "Queens"],
+        answer: "Brooklyn"
+    }
 
-    // var question19 = {
-    //     question: '',
-    //     guess: ["", "", "", ""],
-    //     answer: ""
-    // }
+    var question19 = {
+        question: 'Buonos Pizza serves what size pizza?',
+        guess: ['XL-Large-18"', 'Large-16"', 'Small-14"', 'All of the above'],
+        answer: "All of the above"
+    }
 
-    // var question20 = {
-    //     question: '',
-    //     guess: ["", "", "", ""],
-    //     answer: ""
-    // }
+    var question20 = {
+        question: 'Pasta is believed to have found its roots in what area?',
+        guess: ["China", "Italy", "United States of America", "France"],
+        answer: "China"
+    }
 
     // Save related form data as an object
     // Use .setItem() to store object in storage and JSON.stringify to convert it as a string
@@ -315,14 +324,14 @@ function saveQuestions() {
     localStorage.setItem("question10", JSON.stringify(question10));
     localStorage.setItem("question11", JSON.stringify(question11));
     localStorage.setItem("question12", JSON.stringify(question12));
-    // localStorage.setItem("question13", JSON.stringify(question13));
-    // localStorage.setItem("question14", JSON.stringify(question14));
-    // localStorage.setItem("question15", JSON.stringify(question15));
-    // localStorage.setItem("question16", JSON.stringify(question16));
-    // localStorage.setItem("question17", JSON.stringify(question17));
-    // localStorage.setItem("question18", JSON.stringify(question18));
-    // localStorage.setItem("question19", JSON.stringify(question19));
-    // localStorage.setItem("question20", JSON.stringify(question20));
+    localStorage.setItem("question13", JSON.stringify(question13));
+    localStorage.setItem("question14", JSON.stringify(question14));
+    localStorage.setItem("question15", JSON.stringify(question15));
+    localStorage.setItem("question16", JSON.stringify(question16));
+    localStorage.setItem("question17", JSON.stringify(question17));
+    localStorage.setItem("question18", JSON.stringify(question18));
+    localStorage.setItem("question19", JSON.stringify(question19));
+    localStorage.setItem("question20", JSON.stringify(question20));
 }
 
 var myFuncs = [
@@ -386,43 +395,43 @@ var myFuncs = [
         return myQuestion;
     },
 
-    // function getQuestion13() {
-    //     var myQuestion = JSON.parse(localStorage.getItem("question13"));
-    //     return myQuestion;
-    // },
+    function getQuestion13() {
+        var myQuestion = JSON.parse(localStorage.getItem("question13"));
+        return myQuestion;
+    },
 
-    // function getQuestion14() {
-    //     var myQuestion = JSON.parse(localStorage.getItem("question14"));
-    //     return myQuestion;
-    // },
+    function getQuestion14() {
+        var myQuestion = JSON.parse(localStorage.getItem("question14"));
+        return myQuestion;
+    },
 
-    // function getQuestion15() {
-    //     var myQuestion = JSON.parse(localStorage.getItem("question15"));
-    //     return myQuestion;
-    // },
+    function getQuestion15() {
+        var myQuestion = JSON.parse(localStorage.getItem("question15"));
+        return myQuestion;
+    },
 
-    // function getQuestion16() {
-    //     var myQuestion = JSON.parse(localStorage.getItem("question16"));
-    //     return myQuestion;
-    // },
+    function getQuestion16() {
+        var myQuestion = JSON.parse(localStorage.getItem("question16"));
+        return myQuestion;
+    },
 
-    // function getQuestion17() {
-    //     var myQuestion = JSON.parse(localStorage.getItem("question17"));
-    //     return myQuestion;
-    // },
+    function getQuestion17() {
+        var myQuestion = JSON.parse(localStorage.getItem("question17"));
+        return myQuestion;
+    },
 
-    // function getQuestion18() {
-    //     var myQuestion = JSON.parse(localStorage.getItem("question18"));
-    //     return myQuestion;
-    // },
+    function getQuestion18() {
+        var myQuestion = JSON.parse(localStorage.getItem("question18"));
+        return myQuestion;
+    },
 
-    // function getQuestion19() {
-    //     var myQuestion = JSON.parse(localStorage.getItem("question19"));
-    //     return myQuestion;
-    // },
+    function getQuestion19() {
+        var myQuestion = JSON.parse(localStorage.getItem("question19"));
+        return myQuestion;
+    },
 
-    // function getQuestion20() {
-    //     var myQuestion = JSON.parse(localStorage.getItem("question20"));
-    //     return myQuestion;
-    // },
+    function getQuestion20() {
+        var myQuestion = JSON.parse(localStorage.getItem("question20"));
+        return myQuestion;
+    },
 ];
