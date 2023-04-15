@@ -227,7 +227,7 @@ function saveQuestions() {
     }
 
     var question7 = {
-        question: "Where was the original Bononos Pizza location?",
+        question: "Where was the original Bounos Pizza location?",
         guess: ["2023 W Guadalue Rd Mesa AZ 85202", "3500 E Power Rd Gilbert AZ 85142", "2400 S Fast Cat Ln Poenix AZ 84674", "4555 N Bright Ave Queen Creek AZ 85146"],
         answer: "2023 W Guadalue Rd Mesa AZ 85202"
     }
