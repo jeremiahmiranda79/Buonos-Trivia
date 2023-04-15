@@ -204,7 +204,7 @@ function saveQuestions() {
         answer: "Margherita of Savoy"
     }
     var question3 = {
-        question: "What type of milk is used in Romano cheese?",
+        question: "What type of milk is used in Pecorino Romano cheese?",
         guess: ["Cow", "Sheep", "Goat", "Coconut"],
         answer: "Sheep"
     }
