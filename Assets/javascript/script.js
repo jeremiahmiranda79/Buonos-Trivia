@@ -1,24 +1,19 @@
 var startButtonElement = document.querySelector(".start-button");
 var hero1Element = document.querySelector(".hero1");
 var hero2Element = document.querySelector(".hero2");
-
 var mainElement = document.getElementsByName("main");
 var timeElement = document.querySelector(".time");
-
 var timeLeft = 200;
 var questionIndex = 0;
 var buttons = [];
 var guesses = [];
 var score = 0;
 var isStopTime = false;
-
 var highScoresList = [];
 
 init();
 
 function init() {
-    // highScoresList = JSON.parse(localStorage.getItem("highScoresList")) || [];
-
     highScoresList = JSON.parse(localStorage.getItem("highScoresList"));
 
     if (!highScoresList) {
@@ -45,8 +40,7 @@ function startTime() {
 
         if (timeLeft === 0) {
             // Stops execution of action at set interval
-            clearInterval(timerInterval);
-            // setTimeText(); 
+            clearInterval(timerInterval); 
         }
 
     }, 1000); 
@@ -63,18 +57,14 @@ function setQuestions(_questionIndex) {
     startButtonElement.setAttribute("style", "display: none");
     hero1Element.setAttribute("style", "display: none");
     hero2Element.setAttribute("style", "display: none");
-
     var question = document.createElement("h4");
-
     question.textContent = myFuncs[_questionIndex]().question;
-    // document.body.appendChild(question);
     document.getElementById("question").appendChild(question);
 
     for (var i = 0; i < myFuncs[_questionIndex]().guess.length; i++) {
         buttons[i] = document.createElement("button");
         buttons[i].textContent = i+1 + ": " + myFuncs[_questionIndex]().guess[i];
         guesses[i] = myFuncs[_questionIndex]().guess[i]; 
-        // document.body.appendChild(buttons[i]);
         document.getElementById("buttons").appendChild(buttons[i]);
     }
 
@@ -149,27 +139,18 @@ function submitScore(arr) {
     var header = document.createElement("h2");
     header.textContent = "All done!";
     document.body.appendChild(header);
-    // document.getElementById.appendChild("highscore-input")
     document.getElementById("highscore-input").appendChild(header);
-
     var finalScore = document.createElement("p");
     score = timeLeft;
     finalScore.textContent = "Your final score is: " + score;
-    // document.body.appendChild(finalScore);
     document.getElementById("highscore-input").appendChild(finalScore);
-
     var enterNameElement = document.createElement("p");
     enterNameElement.textContent = "Please enter your name or initials";
-    // document.body.appendChild(enterNameElement);
     document.getElementById("highscore-input").appendChild(enterNameElement);
-
     var input = document.createElement("input");    
-    // document.body.appendChild(input);
     document.getElementById("highscore-input").appendChild(input);
-
     var submitButton = document.createElement("button");
     submitButton.textContent = "Submit";
-    // document.body.appendChild(submitButton);
     document.getElementById("highscore-input").appendChild(submitButton);
 
     submitButton.addEventListener("click", function() {
@@ -178,14 +159,6 @@ function submitScore(arr) {
             highScore: score
         };
 
-        // if (this.name === "") {
-        //     alert("Please enter a name!");
-        // }
-        // else {
-        //     arr.push(playerHighScore);
-        //     localStorage.setItem("highScoresList", JSON.stringify(highScoresList));
-        //     window.location.href = "Assets/html/high-score-page.html";
-        // }
         arr.push(playerHighScore);
         localStorage.setItem("highScoresList", JSON.stringify(highScoresList));
         window.location.href = "Assets/html/high-score-page.html";

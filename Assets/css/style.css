@@ -25,8 +25,6 @@ header p {
     font-weight: 700;
     padding-left: 100px;
     margin: auto;
-
-    /* background-color: black; */
 }
 
 header .view-high-scores {
@@ -35,8 +33,6 @@ header .view-high-scores {
     font-weight: 700;
     padding-right: 100px;
     margin: auto;
-
-    /* background-color: black; */
 }
 
 header .view-high-scores:hover{
@@ -191,25 +187,110 @@ li {
 }
 
 
-/* When using `max-width` as the breakpoint, you must go from widest to narrowest to avoid conflict */
+/* using a mobile-first approach, use `min-width` values going from narrow -> wide for a responsive design */
+@media screen and (min-width: 768px) {
+    /* on tablets, set columns to only be 50% of the width and not grow */
+    
+  }
+  
+  /* media query for larger screens */
+  @media screen and (min-width: 992px) {
+    header p {
+        font-size: 30px;
+        padding-left: 50px;
+    }
+    
+    header .view-high-scores {
+        font-size: 30px;
+        padding-right: 50px;
+    }
 
-/* Tablets - header changes color */
-@media screen and (max-width: 992px) {
-    header {
-      
+    .hero2 {
+        padding-left: 200px;
+        padding-right: 200px;
+        height: 100vh;
+        font-size: 20px;
     }
-  }
-  
-  /* Large smartphones - navbar changes color */
-  @media screen and (max-width: 768px) {
-    nav {
-      
+
+    h1 {
+        /* 4rem = 40px (4 * 10px) */
+        font-size: 6rem;
     }
-  }
-  
-  /* Small smartphones - image placeholders change color */
-  @media screen and (max-width: 576px) {
-    .sample-img {
-      
+
+    h2 {
+        font-size: 5rem;
+    }
+    
+    h3 {
+        font-size: 4rem;
+    }
+    
+    h4 {
+        font-size: 3rem;
+    }
+    
+    h5 {
+        font-size: 2rem;
+    }
+    
+    h6 {
+        font-size: 1rem;
+    }
+
+    .start-button {
+        border-radius: 6px;
+        font-size: 40px;
+        bottom: 5%;
+    }
+
+    #question {
+        padding: 40px;
+    }
+    
+    #buttons button{
+        font-size: 30px; 
+        border-radius: 6px;
+        padding: 15px;
+        margin-top: 2.5%;
+        margin-bottom: 2.5%;
+        margin-right: 10%;
+        margin-left: 10%;
+        min-width: 80%;
+    }
+
+    #feed-back {
+        font-size: 30px;
+        margin-top: 1px;
+        margin-left: 10%;
+    }
+
+    #highscore-input {
+        font-size: 30px;
+        margin-top: 25px;
+        margin-bottom: 25px;
+        margin-left: 40%;
+        margin-right: 40%;
+        max-width: 20%;
+        padding: 25px;
+    }
+    
+    #highscore-input input {
+        margin-bottom: 25px;
+    }
+    
+    li {
+        font-size: 40px;
+        margin-left: 250px;
+    }
+    
+    .clear-high-scores{
+        font-size: 30px; 
+        padding: 5px;
+        margin-left: 40%;
+        margin-right: 4%;
+        margin-top: 2.5%;
+        margin-bottom: 2.5%;
+        text-align: left;
+        min-width: 20%;
     }
   }
